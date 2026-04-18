@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>AI Portfolio</title>
+.card {
+    opacity:0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
 
+.card.show {
+    opacity:1;
+    transform: translateY(0);
+}
 <style>
 body { margin:0; background:#0d0d0d; color:white; font-family:Arial; }
 header { text-align:center; padding:60px; }
@@ -15,7 +24,21 @@ iframe, video { width:100%; border-radius:10px; }
 </style>
 
 </head>
+<script>
+const cards = document.querySelectorAll('.card');
 
+window.addEventListener('scroll', () => {
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50) {
+            card.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
 <body>
 
 <header>
